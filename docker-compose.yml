@@ -9,7 +9,7 @@ services:
       - SERVICE_PORTS=8080
     image: patrikfillus/aplication1
     networks:
-      - nodenet
+      - nodenet2
     environment:
       - SERVICE_PORTS=7070
     deploy:
@@ -32,12 +32,16 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - 80:80
+      - 7070:7070
     networks:
       - nodenet
+      - nodenet2
     deploy:
       placement:
         constraints: [node.role == manager]
 
 networks:
   nodenet:
+    driver: overlay
+  nodenet2:
     driver: overlay
