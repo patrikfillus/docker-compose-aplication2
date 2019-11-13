@@ -2,11 +2,16 @@ version: '3'
 
 services:
   node-app:
-    image: patrikfillus/apptestando
+    image: patrikfillus/aplication2
     networks:
       - nodenet
     environment:
       - SERVICE_PORTS=8080
+    image: patrikfillus/aplication1
+    networks:
+      - nodenet
+    environment:
+      - SERVICE_PORTS=7070
     deploy:
       replicas: 10
       update_config:
